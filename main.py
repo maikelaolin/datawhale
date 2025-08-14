@@ -62,7 +62,6 @@ if __name__ == "__main__":
     from models.flux import text2image
     from models.flux_kentext import tieditor
     from models.text2text import simplify
-    from models.face_replace import face_swap
 
     for row in task.iterrows():
 
