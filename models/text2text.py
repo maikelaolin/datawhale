@@ -9,7 +9,12 @@ model = AutoModelForCausalLM.from_pretrained(model_name_or_path, device_map="aut
 
 def simplify(txt):
     messages = [
-        {"role": "user", "content": "Write a short summary of the benefits of regular exercise"},
+        {"role": "user",
+          "content": f"""You are a professional image understanding expert, and I am using a large model to generate images. 
+                    Please optimize the following prompt words:{txt}. 
+                    Make the generated images of higher quality and more realistic. 
+                    Please keep the prompt words in English for prompt output."""
+         },
     ]
     tokenized_chat = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True,return_tensors="pt",
                                                     enable_thinking=True # Toggle thinking mode (default: True)
